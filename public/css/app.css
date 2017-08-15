@@ -1,2 +1,6 @@
-
-/*# sourceMappingURL=app.css.map */
+#side-menu{
+    font-size: 1.4em;
+}
+#page-wrapper {
+    border-right--color: #444444;
+}

@@ -44,4 +44,8 @@ elixir(function (mix) {
 
 
         ], './public/css/rtllibs.css');
+    mix.browserSync({
+        proxy: 'http://codehacking.dev',
+        injectChanges: true
+    });
 });
