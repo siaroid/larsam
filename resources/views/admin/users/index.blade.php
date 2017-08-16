@@ -9,6 +9,7 @@
     <thead style="background: #337ab7;color: whitesmoke;" class="fsxl">
     <tr style="font-size: .8em;">
         <th>ردیف</th>
+        <th></th>
         <th >اسم کاربر</th>
         <th>ایمیل</th>
         <th>دسترسی</th>
@@ -22,6 +23,7 @@
     @foreach($users as $user)
     <tr>
         <td>{{$user->id}}</td>
+        <td><img class="img-circle" width="40px" style="border: 3px solid #5d8aff" src="{{asset('/images/'.$user->photo->path)}}"></td>
         <td>{{$user->name}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->role->name}}</td>

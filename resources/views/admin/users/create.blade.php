@@ -33,8 +33,8 @@
         {!! Form::select('role_id',$roles , null, ['placeholder' => 'سطح دسترسی...','class'=>'form-control iryekan col-sm-6',]) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('file','تصویر پروفایل :',['class'=>'control-label col-sm-3']) !!}
-        {!! Form::file('file',['class'=>'form-control  btn-success iryekan col-sm-6']) !!}
+        {!! Form::label('path','تصویر پروفایل :',['class'=>'control-label col-sm-3']) !!}
+        {!! Form::file('path',['class'=>'form-control  btn-success iryekan col-sm-6']) !!}
     </div>
     <div class="col-sm-offset-3">
         <div class="form-group">

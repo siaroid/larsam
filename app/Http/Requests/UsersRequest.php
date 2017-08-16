@@ -31,6 +31,7 @@ class UsersRequest extends Request
             'email'=>'required|email',
             'password'=>'required|min:6|confirmed',
             'role_id'=>'required',
+            'path'=>'mimetypes:image/jpg,image/jpeg,image/png,image/gif'
         ];
     }
 }
