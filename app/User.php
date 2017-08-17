@@ -43,4 +43,12 @@ class User extends Authenticatable
         return $v->diffFormat();
 
     }
+    public function getPhotoIdAttribute($value){
+
+
+        if ($photo_path=Photo::find($value)){
+            return 'images/users/'.$photo_path->path;
+        }
+        return 'images/profile.jpg';
+    }
 }

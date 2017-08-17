@@ -23,8 +23,8 @@
     @foreach($users as $user)
     <tr>
         <td>{{$user->id}}</td>
-        <td><img class="img-circle" width="40px" style="border: 3px solid #5d8aff" src="{{asset('/images/'.$user->photo->path)}}"></td>
-        <td>{{$user->name}}</td>
+        <td><img class="img-circle" width="40px" style="border: 3px solid #5d8aff" src="{{asset($user->photo_id)}}"></td>
+        <td><a href="{{route('admin.users.edit',$user->id)}}">{{$user->name}}</a></td>
         <td>{{$user->email}}</td>
         <td>{{$user->role->name}}</td>
         <td>{{$user->created_at}}</td>

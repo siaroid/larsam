@@ -61,7 +61,7 @@ class AdminUsersController extends Controller
         if ($file=$request->file('path')){
 
             $name=time().random_int(1,9).'.'.$file->getClientOriginalExtension();
-            $file->move('images',$name);
+            $file->move('images/users',$name);
 
             $photo=new Photo();
             $photo->path=$name;
@@ -95,6 +95,11 @@ class AdminUsersController extends Controller
     public function edit($id)
     {
         //
+        $roles=Role::lists('name','id');
+        $user=User::find($id);
+
+        return view('admin.users.edit',compact('user','roles'));
+
     }
 
     /**
@@ -104,9 +109,33 @@ class AdminUsersController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsersRequest $request, $id)
     {
         //
+        $user=User::find($id);
+        $input=$request->all();
+        $input['password']=bcrypt($request->password);
+
+        if ($file=$request->file('path')){
+
+            $name=time().random_int(1,9).'.'.$file->getClientOriginalExtension();
+            $file->move('images/users',$name);
+
+
+                $photo=new Photo();
+                $photo->path=$name;
+                $photo->save();
+
+
+          $input['photo_id']=$photo->id;
+
+
+        }
+        $user->update($input);
+
+        return redirect('admin/users');
+
+
     }
 
     /**
