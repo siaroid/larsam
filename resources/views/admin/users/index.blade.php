@@ -2,7 +2,11 @@
 
 
 @section('content')
+    @if(Session::has('deleted_user'))
+        <div style="font-size: 2em" class="alert-danger iryekan">{{session('deleted_user')}}</div>
+        @endif
 <h1 class="iryekan">کاربران</h1>
+
 
 
 <table class="table table-striped table-responsive iryekanfn fsxl ">

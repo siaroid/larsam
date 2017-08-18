@@ -32,6 +32,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Photo');
     }
 
+    public function posts(){
+
+        return $this->hasMany('App\Post');
+    }
+
     public function getCreatedAtAttribute($value){
         $v = new Verta($value);
         return $v->format('date');
@@ -50,5 +55,14 @@ class User extends Authenticatable
             return 'images/users/'.$photo_path->path;
         }
         return 'images/profile.jpg';
+    }
+    public function isAdmin(){
+
+
+        if ($this->role->name=='admin'){
+            return true;
+        }
+        return false;
+
     }
 }

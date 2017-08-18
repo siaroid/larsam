@@ -8,11 +8,12 @@ use App\Role;
 use App\User;
 use function bcrypt;
 use function compact;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
-use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
+use function public_path;
 use function redirect;
+
+use function unlink;
 use function view;
 
 class AdminUsersController extends Controller
@@ -147,5 +148,14 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         //
+        $user=User::findOrFail($id);
+        if(file_exists(public_path($user->photo_id))){
+            unlink(public_path().'/'.$user->photo_id);
+        }
+
+        $user_name=$user->name;
+        $user->delete();
+        Session::flash('deleted_user',$user_name.' از لیست کاربران حذف شد...  ');
+        return redirect('admin/users');
     }
 }

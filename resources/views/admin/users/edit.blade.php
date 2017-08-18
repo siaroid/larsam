@@ -45,6 +45,16 @@
     </div>
     {!! Form::close() !!}
 
+
+    {!! Form::open(['method'=>'DELETE','action' => ['AdminUsersController@destroy',$user->id],'class'=>'iryekan form-horizontal']) !!}
+    <div class="col-sm-offset-3">
+        <div class="form-group">
+            {!! Form::submit('حذف',['class'=>'btn btn-danger']) !!}
+        </div>
+    </div>
+
+    {!! Form::close() !!}
+
     @include('forms/form-errors')
 
 @stop
